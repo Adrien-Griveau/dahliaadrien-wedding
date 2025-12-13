@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Story - Dahlia & Adrien</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="translations.js"></script>
+    <script src="language-switcher.js"></script>
+  </head>
+  <body>
+    <div class="desktop">
+      <!-- Header -->
+      <header class="header">
+        <nav class="nav-links">
+          <a href="index.html" data-i18n="navHome">Home</a>
+          <a href="our-story.html" data-i18n="navOurStory">Our story</a>
+          <a href="travel-stay.html" data-i18n="navTravelStay">Travel & Stay</a>
+          <a href="#" data-i18n="navRegistry">Registry</a>
+        </nav>
+        <div class="language-switcher">
+          <button class="language-dropdown-btn">
+            <span class="language-dropdown-selected">EN</span>
+            <span class="language-dropdown-arrow">▼</span>
+          </button>
+          <div class="language-menu">
+            <button class="language-option active" data-lang="en">
+              English
+            </button>
+            <button class="language-option" data-lang="fr">Français</button>
+            <button class="language-option" data-lang="it">Italiano</button>
+          </div>
+        </div>
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="http://localhost:3845/assets/6f38bddfc98939451fd7c49c11f0f44ce1248477.svg"
+              alt="Logo"
+            />
+          </a>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <section class="content">
+          <h1 class="main-heading" data-i18n="ourStoryHeading">Our Story</h1>
+
+          <div class="divider">
+            <img
+              src="http://localhost:3845/assets/a31adc41acbcbb287a7d0a1324bf88bcc103c2bb.svg"
+              alt=""
+            />
+          </div>
+
+          <div class="story-content">
+            <p class="story-text" data-i18n="storyText1">
+              Every love story is beautiful, but ours is ours. We met in a
+              moment that felt like destiny, and from that day forward, we knew
+              we had found something special.
+            </p>
+            <p class="story-text" data-i18n="storyText2">
+              Through adventures, laughter, challenges, and countless memories,
+              we've built a life together that we're excited to celebrate with
+              all of you.
+            </p>
+            <p class="story-text" data-i18n="storyText3">
+              Venice holds a special place in our hearts, and we can't think of
+              a more magical place to begin this new chapter of our lives
+              together.
+            </p>
+          </div>
+
+          <div class="divider">
+            <img
+              src="http://localhost:3845/assets/8dbcf85fd95e00894bc6a7e5eabdcfb1c9ff791c.svg"
+              alt=""
+            />
+          </div>
+
+          <!-- Photo Gallery -->
+          <section class="photo-gallery">
+            <h2 class="gallery-heading" data-i18n="ourMemories">
+              Our Memories
+            </h2>
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/400x400/b8693f/6f3110?text=Photo+1"
+                  alt="Memory 1"
+                />
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/400x400/b8693f/6f3110?text=Photo+2"
+                  alt="Memory 2"
+                />
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/400x400/b8693f/6f3110?text=Photo+3"
+                  alt="Memory 3"
+                />
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/400x400/b8693f/6f3110?text=Photo+4"
+                  alt="Memory 4"
+                />
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/400x400/b8693f/6f3110?text=Photo+5"
+                  alt="Memory 5"
+                />
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="https://via.placeholder.com/400x400/b8693f/6f3110?text=Photo+6"
+                  alt="Memory 6"
+                />
+              </div>
+            </div>
+          </section>
+
+          <div class="divider">
+            <img
+              src="http://localhost:3845/assets/8dbcf85fd95e00894bc6a7e5eabdcfb1c9ff791c.svg"
+              alt=""
+            />
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <nav class="nav-links">
+          <a href="index.html" data-i18n="navHome">Home</a>
+          <a href="our-story.html" data-i18n="navOurStory">Our story</a>
+          <a href="travel-stay.html" data-i18n="navTravelStay">Travel & Stay</a>
+          <a href="#" data-i18n="navRegistry">Registry</a>
+        </nav>
+        <div class="language-switcher">
+          <button class="language-dropdown-btn">
+            <span class="language-dropdown-selected">EN</span>
+            <span class="language-dropdown-arrow">▼</span>
+          </button>
+          <div class="language-menu">
+            <button class="language-option active" data-lang="en">
+              English
+            </button>
+            <button class="language-option" data-lang="fr">Français</button>
+            <button class="language-option" data-lang="it">Italiano</button>
+          </div>
+        </div>
+      </footer>
+
+      <div class="copyright">
+        <p>© <span id="copyright-year">2025</span></p>
+      </div>
+    </div>
+    <script>
+      document.getElementById("copyright-year").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
