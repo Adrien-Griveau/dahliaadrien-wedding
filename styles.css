@@ -627,6 +627,11 @@ body {
     font-size: 28px;
   }
 
+  .travel-content {
+    padding: 50px 30px;
+    gap: 40px;
+  }
+
   .names-decoration {
     width: 100%;
     max-width: 100%;
@@ -671,6 +676,17 @@ body {
   flex-direction: column;
   gap: 60px;
   align-items: center;
+  background-color: hsla(22, 12%, 96%, 1); /* Light paper-like background */
+  padding: 80px 60px;
+  position: relative;
+  /* Venetian-style decorative double border effect */
+  border: 2px solid hsl(22, 45%, 60%);
+  box-shadow: 0 0 0 4px hsla(22, 12%, 96%, 1), 0 0 0 6px hsl(22, 45%, 60%),
+    0 4px 20px hsla(22, 70%, 25%, 0.15), inset 0 0 0 1px hsla(22, 45%, 60%, 0.2);
+}
+
+.travel-content .section-heading {
+  color: hsl(22, 75%, 22%); /* Darker for better contrast on light background */
 }
 
 .travel-section {
@@ -685,7 +701,7 @@ body {
   font-family: "Old Standard TT", serif;
   font-weight: 700;
   font-size: 32px;
-  color: hsl(22, 70%, 25%);
+  color: hsl(22, 75%, 22%); /* Darker for better contrast on light background */
   text-align: center;
   letter-spacing: 0.96px;
   width: 100%;
@@ -695,7 +711,7 @@ body {
   font-family: "Old Standard TT", serif;
   font-weight: 400;
   font-size: 22px;
-  color: hsl(22, 70%, 25%);
+  color: hsl(22, 75%, 22%); /* Darker for better contrast on light background */
   text-align: center;
   letter-spacing: 0.66px;
   width: 100%;
@@ -707,7 +723,7 @@ body {
   font-family: "Old Standard TT", serif;
   font-weight: 400;
   font-size: 22px;
-  color: hsl(22, 70%, 25%);
+  color: hsl(22, 75%, 22%); /* Darker for better contrast on light background */
   text-align: left;
   letter-spacing: 0.66px;
   list-style: none;
