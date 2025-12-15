@@ -701,7 +701,7 @@ body {
   font-family: "Old Standard TT", serif;
   font-weight: 700;
   font-size: 32px;
-  color: hsl(22, 75%, 22%); /* Darker for better contrast on light background */
+  color: hsl(22, 70%, 25%);
   text-align: center;
   letter-spacing: 0.96px;
   width: 100%;
@@ -711,7 +711,7 @@ body {
   font-family: "Old Standard TT", serif;
   font-weight: 400;
   font-size: 22px;
-  color: hsl(22, 75%, 22%); /* Darker for better contrast on light background */
+  color: hsl(22, 70%, 25%);
   text-align: center;
   letter-spacing: 0.66px;
   width: 100%;
