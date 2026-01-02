@@ -149,6 +149,10 @@ body {
   transform: translateY(0);
 }
 
+.picture-card-wrapper.loaded + .content {
+  margin-top: -100px; /* Adjust gap from 160px to 60px (160px - 100px = 60px) */
+}
+
 .picture-card-stack {
   position: relative;
   width: 100%;
@@ -303,7 +307,7 @@ body {
 .date-location {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
-  font-size: 22px; /* Updated from 38px to match Figma */
+  font-size: 24px; /* Updated from 38px to match Figma */
   color: #625039;
   text-align: center;
   white-space: nowrap;
@@ -402,7 +406,7 @@ body {
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 22px; /* Updated from 32px to match Figma */
+  gap: 8px;
   align-items: center;
   flex-shrink: 0;
 }
@@ -410,7 +414,6 @@ body {
 .event-title {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
-  font-style: italic;
   font-size: 31px; /* Updated from 38px to match Figma */
   color: #625039;
   text-align: center;
@@ -464,8 +467,8 @@ body {
 
 .direction-link {
   font-family: "Crimson Pro", serif;
-  font-weight: 400;
-  font-size: 24px; /* Updated from 20px to match Figma */
+  font-weight: 300;
+  font-size: 20px;
   color: #625039;
   text-decoration: underline;
   text-underline-position: from-font;
