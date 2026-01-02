@@ -303,7 +303,7 @@ body {
 .date-location {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
-  font-size: 22px; /* Updated from 38px to match Figma */
+  font-size: 24px; /* Updated from 38px to match Figma */
   color: #625039;
   text-align: center;
   white-space: nowrap;
