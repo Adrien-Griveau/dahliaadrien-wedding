@@ -9,12 +9,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <script src="translations.js"></script>
     <script src="language-switcher.js"></script>
     <script src="mobile-menu.js"></script>
+    <script src="picture-card.js"></script>
   </head>
   <body>
     <div class="desktop" data-name="Desktop" data-node-id="27:302">
@@ -46,7 +47,14 @@
             data-i18n="navTravelStay"
             >Travel & Stay</a
           >
-          <a href="#" data-node-id="27:247" data-i18n="navRegistry">Registry</a>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfuR2svvZKIdPJTlMlUBtM0Zf2jnxbHzvGqgXpYNtjcv-AXEQ/viewform?usp=header"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-node-id="27:247"
+            data-i18n="navRegistry"
+            >Registry</a
+          >
         </nav>
         <div class="language-switcher">
           <button class="language-dropdown-btn">
@@ -65,17 +73,47 @@
 
       <!-- Main Content -->
       <main class="main-content" data-node-id="27:251">
+        <!-- Picture Card -->
+        <div class="picture-card-wrapper" id="pictureCardWrapper">
+          <div class="picture-card-stack" id="pictureCardStack">
+            <div class="picture-card-item" data-index="0">
+              <img
+                src="Photos/photo1.png"
+                alt="Dahlia & Adrien"
+                class="picture-card-image"
+              />
+            </div>
+            <div class="picture-card-item" data-index="1">
+              <img
+                src="Photos/photo2.png"
+                alt="Dahlia & Adrien"
+                class="picture-card-image"
+              />
+            </div>
+            <div class="picture-card-item" data-index="2">
+              <img
+                src="Photos/photo3.png"
+                alt="Dahlia & Adrien"
+                class="picture-card-image"
+              />
+            </div>
+          </div>
+        </div>
+
         <!-- Hero Section -->
         <section class="content" data-name="content" data-node-id="27:252">
-          <h1
-            class="main-heading"
-            data-node-id="27:253"
-            data-i18n="mainHeading"
-          >
-            We are getting married!
-          </h1>
+          <div class="main-heading-wrapper">
+            <h1
+              class="main-heading"
+              data-node-id="27:253"
+              data-i18n="mainHeading"
+            >
+              We are getting married!
+            </h1>
+            <img src="SVG/little dash.svg" alt="" class="little-dash" />
+          </div>
           <div class="names-decoration" data-node-id="27:254">
-            <img src="dahlia-adrien.svg" alt="Dahlia Adrien" />
+            <img src="SVG/Dahlia Adrien.svg" alt="Dahlia Adrien" />
           </div>
           <p
             class="invitation-text"
@@ -85,25 +123,28 @@
             Joyfully request the pleasure of your company as we speak our vows
             and join in marriage in the presence of family and friends.
           </p>
+          <div class="date-location-wrapper">
+            <img src="SVG/June5June8.svg" alt="" class="date-icon" />
+          </div>
           <p
             class="date-location"
             data-node-id="27:258"
             data-i18n="dateLocation"
           >
-            June 5 to June 8 2026 in Venezia
+            2026 in Venezia
           </p>
         </section>
 
         <!-- Divider -->
         <div class="divider" data-node-id="27:259">
-          <img
-            src="http://localhost:3845/assets/a31adc41acbcbb287a7d0a1324bf88bcc103c2bb.svg"
-            alt=""
-          />
+          <img src="SVG/Separator Line.svg" alt="" />
         </div>
 
         <!-- Events Section -->
         <section class="events-section" data-node-id="27:260">
+          <div class="section-icon">
+            <img src="SVG/Spritz.svg" alt="" />
+          </div>
           <h2
             class="section-heading"
             data-node-id="27:261"
@@ -207,48 +248,57 @@
 
         <!-- Divider -->
         <div class="divider" data-node-id="27:291">
-          <img
-            src="http://localhost:3845/assets/8dbcf85fd95e00894bc6a7e5eabdcfb1c9ff791c.svg"
-            alt=""
-          />
+          <img src="SVG/Separator Line.svg" alt="" />
         </div>
 
-        <!-- Our Story Section -->
-        <section class="cta-section" data-node-id="27:292">
-          <h2
-            class="section-heading"
-            data-node-id="27:293"
-            data-i18n="seeHowItStarted"
-          >
-            See how it all started
+        <!-- Travel & Stay Section -->
+        <section class="cta-section travel-stay-section">
+          <div class="section-icon">
+            <img src="SVG/Stay.svg" alt="" />
+          </div>
+          <h2 class="section-heading" data-i18n="navTravelStay">
+            Travel & Stay
           </h2>
-          <a href="our-story.html" class="cta-button" data-node-id="27:294">
-            <span data-node-id="27:295" data-i18n="ourStoryButton"
-              >Our Story</span
-            >
+          <p class="travel-stay-text" data-i18n="travelStayIntro">
+            We made a selection of places with some special prices for you to
+            stay in Venezia
+          </p>
+          <a
+            href="travel-stay.html"
+            class="travel-stay-link"
+            data-i18n="learnMore"
+          >
+            Learn more
           </a>
         </section>
 
         <!-- Divider -->
         <div class="divider" data-node-id="27:296">
-          <img
-            src="http://localhost:3845/assets/8dbcf85fd95e00894bc6a7e5eabdcfb1c9ff791c.svg"
-            alt=""
-          />
+          <img src="SVG/Separator Line.svg" alt="" />
         </div>
 
-        <!-- RSVP Section -->
-        <section class="cta-section" data-node-id="27:297">
-          <h2
-            class="section-heading"
-            data-node-id="27:298"
-            data-i18n="hopeYouCanMakeIt"
-          >
+        <!-- Registry Section -->
+        <section class="cta-section registry-section" data-node-id="27:297">
+          <div class="section-icon">
+            <img src="SVG/Gondola.svg" alt="" />
+          </div>
+          <h2 class="section-heading" data-i18n="registryHeading">Registry</h2>
+
+          <p class="registry-subtext" data-i18n="registryText">
+            Please register using the link below to indicate your venue.
+          </p>
+          <p class="registry-text" data-i18n="hopeYouCanMakeIt">
             We hope you can make it!
-          </h2>
-          <button class="cta-button" data-node-id="27:299">
+          </p>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfuR2svvZKIdPJTlMlUBtM0Zf2jnxbHzvGqgXpYNtjcv-AXEQ/viewform?usp=header"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-button"
+            data-node-id="27:299"
+          >
             <span data-node-id="27:300" data-i18n="rsvpButton">RSVP</span>
-          </button>
+          </a>
         </section>
       </main>
 
@@ -267,7 +317,14 @@
             data-i18n="navTravelStay"
             >Travel & Stay</a
           >
-          <a href="#" data-node-id="27:308" data-i18n="navRegistry">Registry</a>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfuR2svvZKIdPJTlMlUBtM0Zf2jnxbHzvGqgXpYNtjcv-AXEQ/viewform?usp=header"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-node-id="27:308"
+            data-i18n="navRegistry"
+            >Registry</a
+          >
         </nav>
         <div class="language-switcher">
           <button class="language-dropdown-btn">

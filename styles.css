@@ -6,9 +6,9 @@
 }
 
 body {
-  font-family: "Old Standard TT", serif;
-  background-color: hsla(22, 57%, 41%, 1);
-  color: hsl(22, 70%, 25%);
+  font-family: "Crimson Pro", serif;
+  background-color: #f0ece7;
+  color: #625039; /* Dark brown text from Figma */
   line-height: normal;
   overflow-x: hidden;
 }
@@ -19,8 +19,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 240px;
-  padding: 40px 120px;
+  gap: 146px; /* Updated from 240px to match Figma */
+  padding: 80px 120px; /* Updated from 40px to match Figma */
   width: 100%;
   overflow-x: hidden;
 }
@@ -35,21 +35,74 @@ body {
   gap: 24px;
 }
 
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  position: relative;
+}
+
+.mobile-menu-toggle:focus {
+  outline: 2px solid #625039;
+  outline-offset: 2px;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 2px;
+  background-color: #625039;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+@media (max-width: 1024px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+}
+
 .nav-links {
   display: flex;
   gap: 24px;
   align-items: center;
-  font-family: "Old Standard TT", serif;
-  font-weight: 700;
-  font-size: 22px;
-  color: hsl(22, 70%, 25%);
+  font-family: "Crimson Pro", serif;
+  font-weight: 400; /* Changed from 700 to match Figma */
+  font-size: 18px; /* Changed from 22px to match Figma */
+  color: #625039; /* Dark brown from Figma */
   text-align: center;
   white-space: nowrap;
-  letter-spacing: 0.66px;
+  letter-spacing: 0.54px; /* Updated to match Figma */
 }
 
 .nav-links a {
-  color: hsl(22, 70%, 25%);
+  color: #625039;
   text-decoration: none;
   flex-shrink: 0;
 }
@@ -58,33 +111,107 @@ body {
   opacity: 0.8;
 }
 
-.logo {
-  width: 206.645px;
-  height: 206.645px;
-  flex-shrink: 0;
-  margin-left: 0;
+.nav-links a.active {
+  text-decoration: underline;
 }
 
-.logo img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  max-width: none;
+/* Hide logo on desktop to match Figma design (no logo in header) */
+.logo {
+  display: none;
 }
 
 /* Main Content */
 .main-content {
-  width: 1268px;
+  width: 1338px; /* Updated from 1268px to match Figma */
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 140px;
+  gap: 160px; /* Updated from 140px to match Figma */
   align-items: center;
   flex-shrink: 0;
+}
+
+/* Picture Card Stack */
+.picture-card-wrapper {
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.picture-card-wrapper.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.picture-card-stack {
+  position: relative;
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 3 / 4;
+  cursor: grab;
+}
+
+.picture-card-stack:active {
+  cursor: grabbing;
+}
+
+.picture-card-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(98, 80, 57, 0.25);
+  background-color: #e5d6c5;
+  transform-origin: center center;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease,
+    z-index 0s, box-shadow 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+  user-select: none;
+}
+
+.picture-card-item[data-index="0"] {
+  z-index: 3;
+  transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  opacity: 1;
+  box-shadow: 0 15px 50px rgba(98, 80, 57, 0.3);
+}
+
+.picture-card-item[data-index="1"] {
+  z-index: 2;
+  transform: translateX(-20px) translateY(-20px) rotate(-3deg) scale(0.96);
+  opacity: 0.9;
+}
+
+.picture-card-item[data-index="2"] {
+  z-index: 1;
+  transform: translateX(-40px) translateY(-40px) rotate(-6deg) scale(0.92);
+  opacity: 0.8;
+}
+
+.picture-card-item.swiping {
+  transition: none;
+}
+
+.picture-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
 }
 
 /* Hero Section */
 .content {
   width: 890.389px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   gap: 57px;
@@ -92,139 +219,202 @@ body {
   flex-shrink: 0;
 }
 
-.main-heading {
-  font-family: "Old Standard TT", serif;
-  font-weight: 400;
-  font-size: 38px;
-  color: hsl(22, 70%, 25%);
-  text-align: center;
-  letter-spacing: 1.14px;
-  width: min-content;
-  min-width: 100%;
+.main-heading-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   flex-shrink: 0;
+}
+
+.little-dash {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 0; /* Behind the text */
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+}
+
+.main-heading {
+  position: relative;
+  z-index: 1; /* Above the SVG */
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  font-size: 32px; /* Updated from 38px to match Figma */
+  color: #625039; /* Dark brown from Figma */
+  text-align: center;
+  letter-spacing: 0.96px; /* Updated to match Figma */
+  white-space: nowrap; /* Keep text on one line */
+  width: auto;
+  flex-shrink: 0;
+  margin: 0 auto; /* Center the text */
 }
 
 .names-decoration {
   height: 139px;
   width: 890.389px;
+  max-width: 100%;
   position: relative;
   flex-shrink: 0;
 }
 
 .names-decoration img {
-  width: 100%;
+  width: 70%;
   height: 100%;
   display: block;
   max-width: none;
   position: absolute;
-  inset: -0.72% -0.22% -2.16% -0.22%;
+  top: -0.72%;
+  bottom: -2.16%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .invitation-text {
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 24px;
-  color: hsl(22, 70%, 25%);
+  color: #625039;
   text-align: center;
   letter-spacing: 0.72px;
-  width: 632px;
+  width: 489px; /* Updated from 632px to match Figma */
+  max-width: 100%;
   flex-shrink: 0;
 }
 
+.date-location-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.date-icon {
+  width: auto;
+  height: auto;
+  display: block;
+  margin-bottom: 0;
+}
+
 .date-location {
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
   font-weight: 400;
-  font-size: 38px;
-  color: hsl(22, 70%, 25%);
+  font-size: 22px; /* Updated from 38px to match Figma */
+  color: #625039;
   text-align: center;
   white-space: nowrap;
-  letter-spacing: 1.14px;
+  letter-spacing: 0.66px; /* Updated to match Figma */
   flex-shrink: 0;
+  margin-top: 0;
 }
 
 /* Divider */
 .divider {
-  height: 0;
-  width: 226px;
+  height: 2px;
+  width: 328px;
+  max-width: 100%;
   position: relative;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .divider img {
   width: 100%;
-  height: 100%;
+  height: 2px;
   display: block;
-  max-width: none;
-  position: absolute;
-  inset: -1.5px 0;
+  object-fit: contain;
 }
 
 /* Events Section */
 .events-section {
-  width: calc(100% + 240px);
-  max-width: 100vw;
-  margin-left: -120px;
-  margin-right: -120px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 30px; /* Updated from 60px to match Figma */
   align-items: center;
   flex-shrink: 0;
-  background-color: hsla(22, 15%, 91%, 1);
-  padding: 100px 40px;
-  border-radius: 0;
+  padding: 0 60px; /* Updated to match Figma */
+}
+
+/* Section Icons */
+.section-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px; /* Gap from Figma */
+  height: 64.186px; /* Height from Figma */
+  width: auto;
+}
+
+.section-icon img {
+  width: auto;
+  height: 100%;
+  display: block;
+}
+
+.events-section .section-icon {
+  height: 69.57px; /* Specific height for events icon */
+  width: 26.647px;
+}
+
+.registry-section .section-icon {
+  height: 40.256px; /* Height from Figma */
+  width: 103.788px;
 }
 
 .events-section .section-heading {
-  max-width: 1268px;
   width: 100%;
-}
-
-.events-section .events-grid {
-  max-width: 1268px;
-  width: 100%;
+  color: #be8d75; /* Coral color from Figma */
+  font-size: 38px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1.14px;
 }
 
 .section-heading {
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 38px;
-  color: hsl(22, 70%, 25%);
+  color: #625039; /* Dark brown from Figma */
   text-align: center;
   letter-spacing: 1.14px;
   width: 100%;
   flex-shrink: 0;
-}
-
-.events-section .section-heading {
-  color: hsl(22, 70%, 25%);
 }
 
 .events-grid {
   width: 100%;
   display: flex;
-  gap: 120px;
+  gap: 24px; /* Updated from 120px to match Figma */
   align-items: flex-start;
   justify-content: center;
   flex-shrink: 0;
 }
 
 .event-card {
-  width: 227px;
+  width: 264px; /* Updated from 227px to match Figma */
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 22px; /* Updated from 32px to match Figma */
   align-items: center;
   flex-shrink: 0;
 }
 
 .event-title {
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
   font-weight: 400;
-  font-size: 38px;
-  color: hsl(22, 70%, 25%);
+  font-style: italic;
+  font-size: 31px; /* Updated from 38px to match Figma */
+  color: #625039;
   text-align: center;
-  letter-spacing: 1.14px;
+  letter-spacing: 0.93px; /* Updated to match Figma */
   width: 100%;
   flex-shrink: 0;
 }
@@ -233,9 +423,9 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 22px; /* Updated from 18px to match Figma */
   align-items: center;
-  color: hsl(22, 70%, 25%);
+  color: #625039;
   text-align: center;
   flex-shrink: 0;
 }
@@ -246,35 +436,40 @@ body {
   flex-direction: column;
   gap: 6px;
   align-items: center;
-  font-size: 24px;
-  letter-spacing: 0.72px;
+  font-size: 22px; /* Updated from 24px */
+  letter-spacing: 0.66px;
   flex-shrink: 0;
 }
 
 .event-time {
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
   font-weight: 400;
+  font-style: italic; /* Added italic to match Figma */
   width: 100%;
   text-align: center;
   flex-shrink: 0;
 }
 
 .event-location {
-  font-family: "Old Standard TT", serif;
-  font-weight: 700;
-  width: 100%;
+  font-family: "Crimson Pro", serif;
+  font-weight: 400; /* Changed from 700 */
+  font-size: 25px; /* Updated to match Figma */
+  color: #be8d75; /* Coral color from Figma */
+  width: 264px; /* Fixed width to match Figma */
+  max-width: 100%;
   text-align: center;
+  letter-spacing: 0.75px;
   flex-shrink: 0;
 }
 
 .direction-link {
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
   font-weight: 400;
-  font-size: 20px;
-  color: hsl(22, 70%, 25%);
+  font-size: 24px; /* Updated from 20px to match Figma */
+  color: #625039;
   text-decoration: underline;
   text-underline-position: from-font;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.72px; /* Updated to match Figma */
   text-align: center;
   flex-shrink: 0;
 }
@@ -288,49 +483,111 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 22px; /* Updated from 60px to match Figma */
   align-items: center;
   flex-shrink: 0;
-  padding: 60px 40px;
-  border-radius: 8px;
-}
-
-/* Our Story Section - Alternate background color */
-.cta-section:first-of-type {
-  background-color: hsla(22, 15%, 88%, 1);
-}
-
-/* RSVP Section - Main background color and full width */
-.cta-section:last-of-type {
-  background-color: hsla(22, 15%, 91%, 1);
-  width: calc(100% + 240px);
-  max-width: 100vw;
-  margin-left: -120px;
-  margin-right: -120px;
-  padding: 100px 40px;
+  padding: 0; /* Removed padding to match Figma */
   border-radius: 0;
 }
 
-.cta-section:last-of-type .section-heading,
-.cta-section:last-of-type .cta-button {
-  max-width: 1268px;
-  width: 100%;
+/* Travel & Stay Section */
+.travel-stay-section {
+  width: 659px; /* Width from Figma */
+  max-width: 100%;
+}
+
+.travel-stay-section .section-heading {
+  color: #9b9a85; /* Muted gray from Figma */
+  font-size: 38px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1.14px;
+}
+
+.travel-stay-text {
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #625039;
+  text-align: center;
+  letter-spacing: 0.66px;
+  width: 489px; /* Width from Figma */
+  max-width: 100%;
+  line-height: normal;
+}
+
+.travel-stay-link {
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #625039;
+  text-decoration: underline;
+  text-underline-position: from-font;
+  letter-spacing: 0.72px;
+  text-align: center;
+}
+
+.travel-stay-link:hover {
+  opacity: 0.8;
+}
+
+/* Registry Section - Border and padding from Figma */
+.registry-section {
+  background-color: transparent;
+  width: 794px; /* Fixed width from Figma */
+  max-width: 100%;
+  border: 2px solid #dbc6ae; /* Border color from Figma */
+  padding: 60px; /* Padding from Figma */
+  border-radius: 0;
+  margin: 0;
+  gap: 30px; /* Gap from Figma */
+}
+
+.registry-section .section-heading {
+  color: #be8d75; /* Coral color from Figma */
+  font-size: 38px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1.14px;
+}
+
+.registry-text {
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 31px;
+  color: #625039;
+  text-align: center;
+  letter-spacing: 0.93px;
+  line-height: normal;
+}
+
+.registry-subtext {
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #625039;
+  text-align: center;
+  letter-spacing: 0.66px;
+  line-height: normal;
 }
 
 .cta-section .section-heading {
-  color: hsl(22, 70%, 25%);
+  color: #625039;
 }
 
 .cta-button {
-  background-color: hsl(22, 70%, 25%);
+  background-color: #be8d75; /* Coral color from Figma */
+  border: 3px solid #be8d75; /* Border from Figma */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 34px;
-  border: none;
+  padding: 0 60px; /* Updated padding from Figma */
+  height: 52px; /* Fixed height from Figma */
   cursor: pointer;
   flex-shrink: 0;
   transition: opacity 0.2s;
+  text-decoration: none;
 }
 
 .cta-button:hover {
@@ -338,13 +595,13 @@ body {
 }
 
 .cta-button span {
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
   font-weight: 400;
-  font-size: 28px;
-  color: hsl(22, 70%, 68%);
+  font-size: 32px; /* Updated from 28px to match Figma */
+  color: #e5d6c5; /* Light background color for text */
   text-align: center;
   white-space: nowrap;
-  letter-spacing: 0.84px;
+  letter-spacing: 0.96px; /* Updated to match Figma */
   flex-shrink: 0;
 }
 
@@ -366,14 +623,36 @@ body {
 }
 
 .copyright p {
-  font-family: "Old Standard TT", serif;
-  font-weight: 700;
-  font-size: 22px;
-  color: hsl(22, 70%, 25%);
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  font-size: 18px; /* Match nav font size */
+  color: #625039;
   text-align: center;
   white-space: nowrap;
-  letter-spacing: 0.66px;
+  letter-spacing: 0.54px;
   flex-shrink: 0;
+}
+
+/* Responsive Picture Card */
+@media (max-width: 1400px) {
+  .picture-card-wrapper {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .picture-card-wrapper {
+    max-width: 150px;
+    margin: 0 auto;
+  }
+
+  .picture-card-stack {
+    max-width: 100%;
+  }
+
+  .picture-card-item {
+    border-radius: 12px;
+  }
 }
 
 /* Responsive Design */
@@ -389,9 +668,10 @@ body {
   }
 
   .events-section {
-    width: calc(100% + 120px);
-    margin-left: -60px;
-    margin-right: -60px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
   }
 
   .cta-section:last-of-type {
@@ -401,31 +681,25 @@ body {
   }
 }
 
-/* Mobile Menu Toggle Button */
-.mobile-menu-toggle {
-  display: none;
-}
-
-.hamburger-line {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #6f3110;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-}
+/* Mobile Menu Toggle Button - Removed */
 
 @media (max-width: 1024px) {
   .desktop {
-    gap: 120px;
+    gap: 100px;
     padding: 40px 40px;
     overflow-x: hidden;
   }
 
   .events-section {
-    width: calc(100% + 80px);
-    margin-left: -40px;
-    margin-right: -40px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 20px;
+    align-items: center;
+  }
+
+  .events-section .section-heading {
+    text-align: center;
   }
 
   .cta-section:last-of-type {
@@ -437,206 +711,228 @@ body {
   .events-grid {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 60px;
+    gap: 40px;
   }
 
   .content {
     width: 100%;
     max-width: 890.389px;
+    padding: 0 20px;
   }
 
   .invitation-text {
     width: 100%;
     max-width: 632px;
   }
+
+  .main-content {
+    width: 100%;
+    padding: 0 20px;
+  }
 }
 
 @media (max-width: 768px) {
   .desktop {
-    gap: 80px;
+    gap: 60px;
     padding: 20px 20px;
-    padding-top: 80px; /* Reduced padding since menu is collapsed by default */
+    padding-top: 20px;
     overflow-x: hidden;
   }
 
   .events-section {
-    width: calc(100% + 40px);
-    margin-left: -20px;
-    margin-right: -20px;
-    padding: 80px 20px;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 40px 20px;
+    align-items: center;
+  }
+
+  .events-section .section-heading {
+    text-align: center;
+    width: 100%;
   }
 
   .cta-section:last-of-type {
     width: calc(100% + 40px);
     margin-left: -20px;
     margin-right: -20px;
-    padding: 80px 20px;
+    padding: 60px 20px;
   }
 
   .header {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 40px);
-    max-width: 500px;
+    position: relative;
+    width: 100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
-    background-color: hsla(22, 57%, 41%, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 15px 20px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    border: 2px solid hsl(22, 70%, 25%);
-    transition: all 0.3s ease;
+    gap: 20px;
+    padding: 20px;
   }
 
+  /* Show hamburger menu button on mobile */
   .mobile-menu-toggle {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 30px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001;
-    gap: 5px;
     order: 1;
   }
 
-  .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-  }
-
-  .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
-    opacity: 0;
-  }
-
-  .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
-  }
-
   .logo {
-    width: 50px;
-    height: 50px;
-    flex-shrink: 0;
-    order: 2;
-    display: block;
+    display: none;
   }
 
-  .logo img {
-    width: 100%;
-    height: 100%;
-  }
-
+  /* Hide nav-links by default on mobile */
   .nav-links {
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: hsla(22, 57%, 41%, 0.98);
-    backdrop-filter: blur(10px);
-    border-radius: 0 0 16px 16px;
-    padding: 0 20px;
+    margin-top: 0;
+    background-color: #e5d6c5;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
-    margin-top: 10px;
-    border-top: 2px solid hsl(22, 70%, 25%);
+    font-size: 16px;
+    text-align: left;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    order: 3;
+    border-top: 1px solid rgba(98, 80, 57, 0.1);
   }
 
+  /* Show nav-links when menu is open */
   .header.menu-open .nav-links {
-    max-height: 400px;
-    opacity: 1;
-    padding: 20px;
+    display: flex;
   }
 
   .nav-links a {
-    padding: 12px 16px;
-    border-radius: 8px;
-    transition: background-color 0.2s ease;
-    text-align: center;
-  }
-
-  .nav-links a:hover {
-    background-color: hsla(22, 70%, 25%, 0.1);
-    opacity: 1;
+    padding: 12px 0;
+    width: 100%;
+    text-align: left;
   }
 
   .language-switcher {
-    order: 3;
-    display: none;
+    margin: 0;
+    order: 2;
   }
 
-  .header.menu-open .language-switcher {
-    display: inline-block;
-    position: absolute;
-    top: auto;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 40px);
-  }
-
-  .header.menu-open {
+  .main-heading-wrapper {
     flex-direction: column;
-    align-items: stretch;
-    padding-bottom: 80px;
+    gap: 10px;
+  }
+
+  .main-heading-wrapper .little-dash {
+    position: relative;
+    transform: none;
+    top: auto;
+    left: auto;
+    order: 3;
+    width: 60px;
+    height: auto;
   }
 
   .main-heading {
-    font-size: 32px;
+    font-size: 24px;
+    order: 2;
   }
 
   .section-heading {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .event-title {
-    font-size: 32px;
+    font-size: 26px;
   }
 
   .events-grid {
     flex-direction: column;
     gap: 40px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .event-card {
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
+  }
+
+  .event-card .event-title,
+  .event-card .event-details {
+    text-align: center;
+    align-items: center;
+  }
+
+  .event-card .event-info {
+    align-items: center;
+  }
+
+  .event-card .event-time,
+  .event-card .event-location {
+    text-align: center;
+  }
+
+  .date-location-wrapper {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .date-icon {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  .date-icon img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
   }
 
   .date-location {
-    font-size: 28px;
+    font-size: 20px;
+    white-space: normal;
+    padding: 0 10px;
   }
 
   .invitation-text {
-    font-size: 20px;
+    font-size: 18px;
+    width: 100%;
+    padding: 0 10px;
   }
 
   .story-text,
   .travel-text {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .travel-subheading {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .travel-content {
-    padding: 50px 30px;
-    gap: 40px;
+    gap: 60px;
+    padding: 0 10px;
+  }
+
+  .travel-content .section-heading {
+    font-size: 24px;
+  }
+
+  .travel-subheading {
+    font-size: 24px;
   }
 
   .names-decoration {
     width: 100%;
     max-width: 100%;
     height: auto;
-    min-height: 80px;
+    min-height: 60px;
+    padding: 0 20px;
   }
 
   .names-decoration img {
@@ -645,6 +941,35 @@ body {
     width: 100%;
     height: auto;
     object-fit: contain;
+  }
+
+  .content {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .travel-stay-section {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .travel-stay-text {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .registry-section {
+    width: calc(100% - 40px);
+    padding: 40px 20px;
+  }
+
+  .cta-button {
+    padding: 0 40px;
+    height: 48px;
+  }
+
+  .cta-button span {
+    font-size: 24px;
   }
 }
 
@@ -659,7 +984,7 @@ body {
 }
 
 .story-text {
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 24px;
   color: hsl(22, 70%, 25%);
@@ -674,78 +999,116 @@ body {
   max-width: 890.389px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 160px;
   align-items: center;
-  background-color: hsla(22, 12%, 96%, 1); /* Light paper-like background */
-  padding: 80px 60px;
-  position: relative;
-  /* Venetian-style decorative double border effect */
-  border: 2px solid hsl(22, 45%, 60%);
-  box-shadow: 0 0 0 4px hsla(22, 12%, 96%, 1), 0 0 0 6px hsl(22, 45%, 60%),
-    0 4px 20px hsla(22, 70%, 25%, 0.15), inset 0 0 0 1px hsla(22, 45%, 60%, 0.2);
+}
+
+.travel-header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Gap from Figma */
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.travel-header-section .section-icon {
+  height: 64.186px;
+  width: 70.399px;
+  margin-bottom: 0;
+}
+
+.travel-header-section .main-heading {
+  color: #9b9a85; /* Muted gray from Figma */
+  font-size: 38px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1.14px;
+  margin: 0;
+}
+
+.travel-intro-text {
+  font-family: "Crimson Pro", serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #625039;
+  text-align: center;
+  letter-spacing: 0.72px;
+  width: 489px; /* Width from Figma */
+  line-height: normal;
+  margin-top: 0;
+}
+
+/* Travel page specific styles */
+.content:has(.travel-content) .main-heading {
+  color: #9b9a85; /* Muted gray from Figma */
+  font-weight: 400;
+  font-style: italic;
 }
 
 .travel-content .section-heading {
-  color: hsl(22, 75%, 22%); /* Darker for better contrast on light background */
+  font-family: "Crimson Pro", serif;
+  font-weight: 700; /* Using 700 since 600 not available */
+  font-style: italic;
+  font-size: 31px;
+  color: hsl(35, 31%, 29%); /* #625039 from Figma */
+  text-align: left;
+  letter-spacing: 0.93px;
+  width: 100%;
+  align-self: flex-start;
 }
 
 .travel-section {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  align-items: center;
+  gap: 34px;
+  align-items: flex-start;
+  color: hsl(35, 31%, 29%); /* #625039 from Figma */
 }
 
 .travel-subheading {
-  font-family: "Old Standard TT", serif;
-  font-weight: 700;
-  font-size: 32px;
-  color: hsl(22, 70%, 25%);
-  text-align: center;
-  letter-spacing: 0.96px;
+  font-family: "Crimson Pro", serif;
+  font-weight: 700; /* Using 700 since 600 not available */
+  font-style: italic;
+  font-size: 31px;
+  color: hsl(35, 31%, 29%); /* #625039 from Figma */
+  text-align: left;
+  letter-spacing: 0.93px;
   width: 100%;
 }
 
 .travel-text {
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 22px;
-  color: hsl(22, 70%, 25%);
-  text-align: center;
+  color: hsl(35, 31%, 29%); /* #625039 from Figma */
+  text-align: left;
   letter-spacing: 0.66px;
   width: 100%;
-  line-height: 1.6;
-  max-width: 800px;
+  line-height: normal;
+  max-width: 680px;
 }
 
 .travel-list {
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 22px;
-  color: hsl(22, 75%, 22%); /* Darker for better contrast on light background */
+  color: hsl(35, 31%, 29%); /* #625039 from Figma */
   text-align: left;
   letter-spacing: 0.66px;
-  list-style: none;
+  list-style: disc;
   width: 100%;
-  max-width: 800px;
+  max-width: 680px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
+  padding-left: 33px;
 }
 
 .travel-list li {
-  position: relative;
-  padding-left: 32px;
-  line-height: 1.6;
-}
-
-.travel-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  font-size: 28px;
-  line-height: 1;
+  line-height: normal;
+  margin-bottom: 0;
 }
 
 .cta-button {
@@ -770,7 +1133,7 @@ body {
 }
 
 .gallery-heading {
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 38px;
   color: hsl(22, 70%, 25%);
@@ -826,24 +1189,124 @@ body {
 }
 
 @media (max-width: 480px) {
+  .picture-card-wrapper {
+    max-width: 120px;
+  }
+
+  .desktop {
+    gap: 40px;
+    padding: 15px 15px;
+  }
+
+  .events-section {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 30px 15px;
+    align-items: center;
+  }
+
+  .events-grid {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .event-card {
+    width: 100%;
+    max-width: 280px;
+    align-items: center;
+  }
+
   .gallery-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
   .names-decoration {
-    min-height: 60px;
+    min-height: 50px;
     padding: 0 10px;
   }
 
   .content {
     padding: 0 10px;
+    gap: 40px;
+  }
+
+  .date-location-wrapper {
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  .date-icon {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  .date-icon img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
   }
 
   .date-location {
-    font-size: 24px;
+    font-size: 18px;
     white-space: normal;
     word-wrap: break-word;
+    padding: 0 15px;
+  }
+
+  .main-heading-wrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .main-heading-wrapper .little-dash {
+    position: relative;
+    transform: none;
+    top: auto;
+    left: auto;
+    order: 3;
+    width: 50px;
+    height: auto;
+  }
+
+  .main-heading {
+    font-size: 20px;
+    order: 2;
+  }
+
+  .section-heading {
+    font-size: 24px;
+  }
+
+  .event-title {
+    font-size: 22px;
+  }
+
+  .nav-links {
+    font-size: 14px;
+    gap: 12px;
+  }
+
+  .invitation-text {
+    font-size: 16px;
+  }
+
+  .events-section {
+    padding: 40px 15px;
+  }
+
+  .cta-section:last-of-type {
+    padding: 40px 15px;
+  }
+
+  .registry-section {
+    padding: 30px 15px;
   }
 }
 
@@ -851,29 +1314,27 @@ body {
 .language-switcher {
   position: relative;
   display: inline-block;
-  font-family: "Old Standard TT", serif;
+  font-family: "Crimson Pro", serif;
 }
 
 .language-dropdown-btn {
   background-color: transparent;
-  border: 2px solid hsl(22, 70%, 25%);
-  color: hsl(22, 70%, 25%);
-  padding: 8px 24px;
-  font-family: "Old Standard TT", serif;
+  border: none; /* Removed border to match Figma */
+  color: #625039;
+  padding: 0;
+  font-family: "Crimson Pro", serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400; /* Changed from 700 to match Figma */
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 3px; /* Updated gap to match Figma */
   transition: all 0.3s ease;
   letter-spacing: 0.54px;
 }
 
 .language-dropdown-btn:hover {
-  background-color: hsl(22, 70%, 25%);
-  color: hsl(22, 70%, 68%);
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .language-dropdown-selected {
@@ -896,8 +1357,8 @@ body {
   top: 100%;
   left: 0;
   margin-top: 4px;
-  background-color: hsl(22, 50%, 48%);
-  border: 2px solid hsl(22, 70%, 25%);
+  background-color: #e5d6c5; /* Match background */
+  border: 1px solid #625039;
   min-width: 140px;
   z-index: 1000;
   display: none;
@@ -911,10 +1372,10 @@ body {
 
 .language-option {
   padding: 12px 24px;
-  color: hsl(22, 70%, 25%);
-  font-family: "Old Standard TT", serif;
+  color: #625039;
+  font-family: "Crimson Pro", serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400; /* Changed from 700 */
   cursor: pointer;
   transition: all 0.2s ease;
   letter-spacing: 0.54px;
@@ -925,13 +1386,11 @@ body {
 }
 
 .language-option:hover {
-  background-color: hsl(22, 70%, 25%);
-  color: hsl(22, 70%, 68%);
+  background-color: rgba(98, 80, 57, 0.1);
 }
 
 .language-option.active {
-  background-color: hsl(22, 70%, 25%);
-  color: hsl(22, 70%, 68%);
+  background-color: rgba(98, 80, 57, 0.2);
 }
 
 /* Language switcher in header */
@@ -954,17 +1413,24 @@ body {
 /* Responsive language switcher */
 @media (max-width: 768px) {
   .header .language-switcher {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 10px;
-    width: 100%;
+    margin: 0;
     display: flex;
     justify-content: center;
   }
 
+  .footer {
+    flex-direction: column;
+    gap: 20px;
+  }
+
   .footer .language-switcher {
-    margin-left: 0;
-    margin-top: 20px;
+    margin: 0;
+  }
+
+  .footer .nav-links {
+    flex-direction: column;
+    gap: 16px;
+    font-size: 16px;
   }
 
   .language-dropdown-btn {
