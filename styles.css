@@ -214,7 +214,7 @@ body {
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 57px;
+  gap: 40px;
   align-items: center;
   flex-shrink: 0;
 }
