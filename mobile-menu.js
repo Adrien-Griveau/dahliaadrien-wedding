@@ -34,4 +34,32 @@
   });
 })();
 
+// Mark active page in navigation
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    const currentPath = window.location.pathname;
+    const currentPage = currentPath.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+      const linkHref = link.getAttribute('href');
+      // Skip external links (those starting with http)
+      if (linkHref.startsWith('http')) {
+        return;
+      }
+      
+      // Normalize paths for comparison
+      const linkPage = linkHref.split('/').pop();
+      const isHomePage = currentPage === '' || currentPage === 'index.html' || currentPath.endsWith('/');
+      const isHomeLink = linkPage === 'index.html' || linkPage === '';
+      
+      // Check if the link matches the current page
+      if ((isHomePage && isHomeLink) || 
+          (!isHomePage && linkPage === currentPage)) {
+        link.classList.add('active');
+      }
+    });
+  });
+})();
+
 
