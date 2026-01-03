@@ -1123,8 +1123,12 @@ body {
   margin-bottom: 0;
 }
 
+.our-story-header-section .section-icon img {
+  color: var(--color-accent-coral);
+}
+
 .our-story-header-section .main-heading {
-  color: var(--color-accent-muted);
+  color: var(--color-accent-coral);
   font-size: 38px;
   font-weight: 400;
   font-style: italic;
