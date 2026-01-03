@@ -83,7 +83,7 @@ svg {
 }
 
 img {
-  color: var(--color-border-light);
+  color: var(--color-accent-muted);
 }
 
 img.date-icon {
@@ -656,7 +656,7 @@ img.little-dash {
 }
 
 .travel-stay-section .section-heading {
-  color: var(--color-accent-muted-rgba);
+  color: var(--color-accent-muted);
   font-size: 38px;
   font-weight: 400;
   font-style: italic;
@@ -664,7 +664,7 @@ img.little-dash {
 }
 
 .cta-button {
-  background-color: var(--color-accent-coral-rgba);
+  background-color: var(--color-accent-coral);
   border-width: 0px;
   border-color: rgba(0, 0, 0, 0);
   border-style: none;
