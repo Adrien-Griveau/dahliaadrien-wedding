@@ -1,3 +1,68 @@
+/* ============================================
+   COLOR TOKENS - Edit colors here to update the entire website
+   
+   To change colors across the entire site, simply modify the values below.
+   All colors throughout the website use these variables, so changes here
+   will automatically apply everywhere.
+   
+   Example: To change the main text color, edit --color-text-primary below.
+   ============================================ */
+:root {
+  /* Primary Colors */
+  --color-background: #f0ece7; /* Main background */
+  --color-background-light: #e5d6c5; /* Card backgrounds, menu backgrounds */
+
+  /* Text Colors */
+  --color-text-primary: #625039; /* Main text color (dark brown) */
+  --color-text-white: #ffffff; /* White text */
+
+  /* Accent Colors */
+  --color-accent-coral: #be8d75; /* Coral accent (headings, buttons, links) */
+  --color-accent-coral-rgba: rgba(190, 141, 117, 1); /* Coral with opacity */
+  --color-accent-muted: #9b9a85; /* Muted gray accent */
+  --color-accent-muted-rgba: rgba(
+    155,
+    154,
+    133,
+    1
+  ); /* Muted gray with opacity */
+
+  /* Border Colors */
+  --color-border-light: #dbc6ae; /* Light border */
+  --color-border-primary: #625039; /* Primary border */
+
+  /* Shadow Colors */
+  --color-shadow-primary: rgba(98, 80, 57, 0.25); /* Primary shadow */
+  --color-shadow-strong: rgba(98, 80, 57, 0.3); /* Strong shadow */
+  --color-shadow-light: rgba(98, 80, 57, 0.1); /* Light shadow */
+  --color-shadow-black: rgba(0, 0, 0, 0.1); /* Black shadow */
+
+  /* Interactive Colors */
+  --color-link-hover: rgba(191, 141, 117, 1); /* Link hover/active */
+  --color-hover-overlay: rgba(98, 80, 57, 0.1); /* Hover overlay */
+  --color-active-overlay: rgba(98, 80, 57, 0.2); /* Active overlay */
+
+  /* Selected Text Colors */
+  --color-selection-background: rgba(
+    190,
+    141,
+    117,
+    0.3
+  ); /* Background color when text is selected */
+  --color-selection-text: #625039; /* Text color when selected */
+}
+
+/* Text Selection Styles */
+::selection {
+  background-color: var(--color-selection-background);
+  color: var(--color-selection-text);
+}
+
+::-moz-selection {
+  background-color: var(--color-selection-background);
+  color: var(--color-selection-text);
+}
+
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -7,8 +72,8 @@
 
 body {
   font-family: "Crimson Pro", serif;
-  background-color: #f0ece7;
-  color: #625039; /* Dark brown text from Figma */
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
   line-height: normal;
   overflow-x: hidden;
 }
@@ -51,14 +116,14 @@ body {
 }
 
 .mobile-menu-toggle:focus {
-  outline: 2px solid #625039;
+  outline: 2px solid var(--color-text-primary);
   outline-offset: 2px;
 }
 
 .hamburger-line {
   width: 100%;
   height: 2px;
-  background-color: #625039;
+  background-color: var(--color-text-primary);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -95,16 +160,17 @@ body {
   font-family: "Crimson Pro", serif;
   font-weight: 400; /* Changed from 700 to match Figma */
   font-size: 18px; /* Changed from 22px to match Figma */
-  color: #625039; /* Dark brown from Figma */
+  color: var(--color-text-primary);
   text-align: center;
   white-space: nowrap;
   letter-spacing: 0.54px; /* Updated to match Figma */
 }
 
 .nav-links a {
-  color: #625039;
+  color: var(--color-text-primary);
   text-decoration: none;
   flex-shrink: 0;
+  border-bottom: none;
 }
 
 .nav-links a:hover {
@@ -112,7 +178,7 @@ body {
 }
 
 .nav-links a.active {
-  text-decoration: underline;
+  border-bottom: 1px solid var(--color-link-hover);
 }
 
 /* Hide logo on desktop to match Figma design (no logo in header) */
@@ -171,8 +237,8 @@ body {
   height: 100%;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(98, 80, 57, 0.25);
-  background-color: #e5d6c5;
+  box-shadow: 0 10px 40px var(--color-shadow-primary);
+  background-color: var(--color-background-light);
   transform-origin: center center;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease,
     z-index 0s, box-shadow 0.3s ease;
@@ -185,7 +251,7 @@ body {
   z-index: 3;
   transform: translateX(0) translateY(0) rotate(0deg) scale(1);
   opacity: 1;
-  box-shadow: 0 15px 50px rgba(98, 80, 57, 0.3);
+  box-shadow: 0 15px 50px var(--color-shadow-strong);
 }
 
 .picture-card-item[data-index="1"] {
@@ -249,7 +315,7 @@ body {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 32px; /* Updated from 38px to match Figma */
-  color: #625039; /* Dark brown from Figma */
+  color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.96px; /* Updated to match Figma */
   white-space: nowrap; /* Keep text on one line */
@@ -280,9 +346,9 @@ body {
 
 .invitation-text {
   font-family: "Crimson Pro", serif;
-  font-weight: 400;
+  font-weight: 200;
   font-size: 24px;
-  color: #625039;
+  color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.72px;
   width: 489px; /* Updated from 632px to match Figma */
@@ -308,7 +374,7 @@ body {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 24px; /* Updated from 38px to match Figma */
-  color: #625039;
+  color: var(--color-text-primary);
   text-align: center;
   white-space: nowrap;
   letter-spacing: 0.66px; /* Updated to match Figma */
@@ -374,7 +440,7 @@ body {
 
 .events-section .section-heading {
   width: 100%;
-  color: #be8d75; /* Coral color from Figma */
+  color: var(--color-accent-coral);
   font-size: 38px;
   font-weight: 400;
   font-style: italic;
@@ -385,7 +451,7 @@ body {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 38px;
-  color: #625039; /* Dark brown from Figma */
+  color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 1.14px;
   width: 100%;
@@ -414,8 +480,8 @@ body {
 .event-title {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
-  font-size: 31px; /* Updated from 38px to match Figma */
-  color: #625039;
+  font-size: 24px; /* Updated from 38px to match Figma */
+  color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.93px; /* Updated to match Figma */
   width: 100%;
@@ -428,7 +494,7 @@ body {
   flex-direction: column;
   gap: 22px; /* Updated from 18px to match Figma */
   align-items: center;
-  color: #625039;
+  color: var(--color-text-primary);
   text-align: center;
   flex-shrink: 0;
 }
@@ -446,7 +512,7 @@ body {
 
 .event-time {
   font-family: "Crimson Pro", serif;
-  font-weight: 400;
+  font-weight: 200;
   font-style: italic; /* Added italic to match Figma */
   width: 100%;
   text-align: center;
@@ -456,9 +522,9 @@ body {
 .event-location {
   font-family: "Crimson Pro", serif;
   font-weight: 400; /* Changed from 700 */
-  font-size: 25px; /* Updated to match Figma */
-  color: #be8d75; /* Coral color from Figma */
-  width: 264px; /* Fixed width to match Figma */
+  font-size: 28px; /* Updated to match Figma */
+  color: var(--color-accent-coral);
+  width: 100%;
   max-width: 100%;
   text-align: center;
   letter-spacing: 0.75px;
@@ -469,7 +535,7 @@ body {
   font-family: "Crimson Pro", serif;
   font-weight: 300;
   font-size: 20px;
-  color: #625039;
+  color: var(--color-text-primary);
   text-decoration: underline;
   text-underline-position: from-font;
   letter-spacing: 0.72px; /* Updated to match Figma */
@@ -499,19 +565,11 @@ body {
   max-width: 100%;
 }
 
-.travel-stay-section .section-heading {
-  color: #9b9a85; /* Muted gray from Figma */
-  font-size: 38px;
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: 1.14px;
-}
-
 .travel-stay-text {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 22px;
-  color: #625039;
+  color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.66px;
   width: 489px; /* Width from Figma */
@@ -521,9 +579,9 @@ body {
 
 .travel-stay-link {
   font-family: "Crimson Pro", serif;
-  font-weight: 400;
-  font-size: 24px;
-  color: #625039;
+  font-weight: 200;
+  font-size: 20px;
+  color: var(--color-text-primary);
   text-decoration: underline;
   text-underline-position: from-font;
   letter-spacing: 0.72px;
@@ -539,15 +597,15 @@ body {
   background-color: transparent;
   width: 794px; /* Fixed width from Figma */
   max-width: 100%;
-  border: 2px solid #dbc6ae; /* Border color from Figma */
+  border: 2px solid var(--color-border-light);
   padding: 60px; /* Padding from Figma */
   border-radius: 0;
   margin: 0;
-  gap: 30px; /* Gap from Figma */
+  gap: 24px; /* Gap from Figma */
 }
 
 .registry-section .section-heading {
-  color: #be8d75; /* Coral color from Figma */
+  color: var(--color-accent-coral-rgba);
   font-size: 38px;
   font-weight: 400;
   font-style: italic;
@@ -556,10 +614,10 @@ body {
 
 .registry-text {
   font-family: "Crimson Pro", serif;
-  font-weight: 400;
+  font-weight: 200;
   font-style: italic;
-  font-size: 31px;
-  color: #625039;
+  font-size: 22px;
+  color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.93px;
   line-height: normal;
@@ -567,21 +625,29 @@ body {
 
 .registry-subtext {
   font-family: "Crimson Pro", serif;
-  font-weight: 400;
+  font-weight: 200;
   font-size: 22px;
-  color: #625039;
+  color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.66px;
   line-height: normal;
 }
 
 .cta-section .section-heading {
-  color: #625039;
+  color: var(--color-text-primary);
+}
+
+.travel-stay-section .section-heading {
+  color: var(--color-accent-muted-rgba);
+  font-size: 38px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1.14px;
 }
 
 .cta-button {
-  background-color: #be8d75; /* Coral color from Figma */
-  border: 3px solid #be8d75; /* Border from Figma */
+  background-color: var(--color-accent-coral-rgba);
+  border: 3px solid var(--color-accent-coral);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -599,9 +665,9 @@ body {
 
 .cta-button span {
   font-family: "Crimson Pro", serif;
-  font-weight: 400;
-  font-size: 32px; /* Updated from 28px to match Figma */
-  color: #e5d6c5; /* Light background color for text */
+  font-weight: 200;
+  font-size: 24px; /* Updated from 28px to match Figma */
+  color: var(--color-text-white);
   text-align: center;
   white-space: nowrap;
   letter-spacing: 0.96px; /* Updated to match Figma */
@@ -629,7 +695,7 @@ body {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 18px; /* Match nav font size */
-  color: #625039;
+  color: var(--color-text-primary);
   text-align: center;
   white-space: nowrap;
   letter-spacing: 0.54px;
@@ -790,17 +856,17 @@ body {
     left: 0;
     right: 0;
     margin-top: 0;
-    background-color: #e5d6c5;
+    background-color: var(--color-background-light);
     flex-direction: column;
     gap: 16px;
     width: 100%;
     font-size: 16px;
     text-align: left;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px var(--color-shadow-black);
     z-index: 1000;
     order: 3;
-    border-top: 1px solid rgba(98, 80, 57, 0.1);
+    border-top: 1px solid var(--color-shadow-light);
   }
 
   /* Show nav-links when menu is open */
@@ -990,7 +1056,7 @@ body {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 24px;
-  color: hsl(22, 70%, 25%);
+  color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.72px;
   width: 100%;
@@ -1022,7 +1088,7 @@ body {
 }
 
 .travel-header-section .main-heading {
-  color: #9b9a85; /* Muted gray from Figma */
+  color: var(--color-accent-muted);
   font-size: 38px;
   font-weight: 400;
   font-style: italic;
@@ -1034,7 +1100,7 @@ body {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 24px;
-  color: #625039;
+  color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.72px;
   width: 489px; /* Width from Figma */
@@ -1042,9 +1108,33 @@ body {
   margin-top: 0;
 }
 
+.our-story-header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.our-story-header-section .section-icon {
+  height: 64.186px;
+  width: auto;
+  margin-bottom: 0;
+}
+
+.our-story-header-section .main-heading {
+  color: var(--color-accent-muted);
+  font-size: 38px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1.14px;
+  margin: 0;
+}
+
 /* Travel page specific styles */
 .content:has(.travel-content) .main-heading {
-  color: #9b9a85; /* Muted gray from Figma */
+  color: var(--color-accent-muted);
   font-weight: 400;
   font-style: italic;
 }
@@ -1054,7 +1144,7 @@ body {
   font-weight: 700; /* Using 700 since 600 not available */
   font-style: italic;
   font-size: 31px;
-  color: hsl(35, 31%, 29%); /* #625039 from Figma */
+  color: var(--color-text-primary);
   text-align: left;
   letter-spacing: 0.93px;
   width: 100%;
@@ -1067,7 +1157,7 @@ body {
   flex-direction: column;
   gap: 34px;
   align-items: flex-start;
-  color: hsl(35, 31%, 29%); /* #625039 from Figma */
+  color: var(--color-text-primary);
 }
 
 .travel-subheading {
@@ -1075,7 +1165,7 @@ body {
   font-weight: 700; /* Using 700 since 600 not available */
   font-style: italic;
   font-size: 31px;
-  color: hsl(35, 31%, 29%); /* #625039 from Figma */
+  color: var(--color-text-primary);
   text-align: left;
   letter-spacing: 0.93px;
   width: 100%;
@@ -1085,7 +1175,7 @@ body {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 22px;
-  color: hsl(35, 31%, 29%); /* #625039 from Figma */
+  color: var(--color-text-primary);
   text-align: left;
   letter-spacing: 0.66px;
   width: 100%;
@@ -1097,7 +1187,7 @@ body {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 22px;
-  color: hsl(35, 31%, 29%); /* #625039 from Figma */
+  color: var(--color-text-primary);
   text-align: left;
   letter-spacing: 0.66px;
   list-style: disc;
@@ -1139,7 +1229,7 @@ body {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 38px;
-  color: hsl(22, 70%, 25%);
+  color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 1.14px;
   width: 100%;
@@ -1323,7 +1413,7 @@ body {
 .language-dropdown-btn {
   background-color: transparent;
   border: none; /* Removed border to match Figma */
-  color: #625039;
+  color: var(--color-text-primary);
   padding: 0;
   font-family: "Crimson Pro", serif;
   font-size: 18px;
@@ -1360,13 +1450,13 @@ body {
   top: 100%;
   left: 0;
   margin-top: 4px;
-  background-color: #e5d6c5; /* Match background */
-  border: 1px solid #625039;
+  background-color: var(--color-background-light);
+  border: 1px solid var(--color-text-primary);
   min-width: 140px;
   z-index: 1000;
   display: none;
   flex-direction: column;
-  box-shadow: 0 4px 8px hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 4px 8px var(--color-shadow-black);
 }
 
 .language-menu.show {
@@ -1375,7 +1465,7 @@ body {
 
 .language-option {
   padding: 12px 24px;
-  color: #625039;
+  color: var(--color-text-primary);
   font-family: "Crimson Pro", serif;
   font-size: 18px;
   font-weight: 400; /* Changed from 700 */
@@ -1389,11 +1479,11 @@ body {
 }
 
 .language-option:hover {
-  background-color: rgba(98, 80, 57, 0.1);
+  background-color: var(--color-hover-overlay);
 }
 
 .language-option.active {
-  background-color: rgba(98, 80, 57, 0.2);
+  background-color: var(--color-active-overlay);
 }
 
 /* Language switcher in header */
