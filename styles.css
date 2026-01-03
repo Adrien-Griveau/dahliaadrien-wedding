@@ -19,7 +19,7 @@
   /* Accent Colors */
   --color-accent-coral: #a55434; /* Coral accent (headings, buttons, links) */
   --color-accent-coral-rgba: rgba(190, 141, 117, 1); /* Coral with opacity */
-  --color-accent-muted: #9b9a85; /* Muted gray accent */
+  --color-accent-muted: #8a9d34; /* Muted gray accent */
   --color-accent-muted-rgba: rgba(
     155,
     154,
@@ -83,7 +83,7 @@ svg {
 }
 
 img {
-  color: var(--color-accent-coral);
+  color: var(--color-border-light);
 }
 
 img.date-icon {
@@ -415,6 +415,8 @@ img.little-dash {
   height: 2px;
   display: block;
   object-fit: contain;
+  /* Note: SVG colors are set in the SVG file itself since <img> sources can't access CSS variables */
+  /* Color should match --color-accent-coral: #a55434 */
 }
 
 /* Events Section */
@@ -663,7 +665,11 @@ img.little-dash {
 
 .cta-button {
   background-color: var(--color-accent-coral-rgba);
-  border: 3px solid var(--color-accent-coral);
+  border-width: 0px;
+  border-color: rgba(0, 0, 0, 0);
+  border-style: none;
+  border-image: none;
+  color: var(--color-background);
   display: flex;
   align-items: center;
   justify-content: center;
