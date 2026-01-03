@@ -9,15 +9,15 @@
    ============================================ */
 :root {
   /* Primary Colors */
-  --color-background: #f0ece7; /* Main background */
-  --color-background-light: #e5d6c5; /* Card backgrounds, menu backgrounds */
+  --color-background: #e3decd; /* Main background */
+  --color-background-light: #edeae0; /* Card backgrounds, menu backgrounds */
 
   /* Text Colors */
-  --color-text-primary: #625039; /* Main text color (dark brown) */
-  --color-text-white: #ffffff; /* White text */
+  --color-text-primary: #71512c; /* Main text color (dark brown) */
+  --color-text-white: #e3decd; /* White text */
 
   /* Accent Colors */
-  --color-accent-coral: #be8d75; /* Coral accent (headings, buttons, links) */
+  --color-accent-coral: #a55434; /* Coral accent (headings, buttons, links) */
   --color-accent-coral-rgba: rgba(190, 141, 117, 1); /* Coral with opacity */
   --color-accent-muted: #9b9a85; /* Muted gray accent */
   --color-accent-muted-rgba: rgba(
@@ -44,12 +44,12 @@
 
   /* Selected Text Colors */
   --color-selection-background: rgba(
-    190,
-    141,
-    117,
+    113,
+    81,
+    44,
     0.3
   ); /* Background color when text is selected */
-  --color-selection-text: #625039; /* Text color when selected */
+  --color-selection-text: #71512c; /* Text color when selected */
 }
 
 /* Text Selection Styles */
@@ -76,6 +76,22 @@ body {
   color: var(--color-text-primary);
   line-height: normal;
   overflow-x: hidden;
+}
+
+svg {
+  color: rgba(191, 141, 117, 1);
+}
+
+img {
+  color: var(--color-accent-coral);
+}
+
+img.date-icon {
+  color: var(--color-accent-coral);
+}
+
+img.little-dash {
+  color: var(--color-accent-muted);
 }
 
 /* Desktop Container */
@@ -319,7 +335,7 @@ body {
   text-align: center;
   letter-spacing: 0.96px; /* Updated to match Figma */
   white-space: nowrap; /* Keep text on one line */
-  width: auto;
+  width: 100%;
   flex-shrink: 0;
   margin: 0 auto; /* Center the text */
 }
@@ -347,7 +363,7 @@ body {
 .invitation-text {
   font-family: "Crimson Pro", serif;
   font-weight: 200;
-  font-size: 24px;
+  font-size: 22px;
   color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.72px;
@@ -480,7 +496,7 @@ body {
 .event-title {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
-  font-size: 24px; /* Updated from 38px to match Figma */
+  font-size: 22px; /* Updated from 38px to match Figma */
   color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.93px; /* Updated to match Figma */
@@ -567,7 +583,7 @@ body {
 
 .travel-stay-text {
   font-family: "Crimson Pro", serif;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 22px;
   color: var(--color-text-primary);
   text-align: center;
@@ -614,7 +630,7 @@ body {
 
 .registry-text {
   font-family: "Crimson Pro", serif;
-  font-weight: 200;
+  font-weight: 300;
   font-style: italic;
   font-size: 22px;
   color: var(--color-text-primary);
@@ -797,6 +813,23 @@ body {
   .main-content {
     width: 100%;
     padding: 0 20px;
+  }
+
+  .names-decoration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .names-decoration img {
+    position: static !important;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    transform: none !important;
+    left: auto;
+    top: auto;
+    bottom: auto;
   }
 }
 
@@ -1002,14 +1035,23 @@ body {
     height: auto;
     min-height: 60px;
     padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .names-decoration img {
-    position: relative;
-    inset: 0;
-    width: 100%;
+    position: static !important;
+    width: auto;
+    max-width: 100%;
     height: auto;
     object-fit: contain;
+    margin: 0;
+    overflow: visible;
+    transform: none !important;
+    left: auto;
+    top: auto;
+    bottom: auto;
   }
 
   .content {
@@ -1054,8 +1096,8 @@ body {
 
 .story-text {
   font-family: "Crimson Pro", serif;
-  font-weight: 400;
-  font-size: 24px;
+  font-weight: 300;
+  font-size: 22px;
   color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.72px;
@@ -1070,6 +1112,8 @@ body {
   flex-direction: column;
   gap: 160px;
   align-items: center;
+  padding: 24px;
+  background-color: var(--color-text-white);
 }
 
 .travel-header-section {
@@ -1098,8 +1142,8 @@ body {
 
 .travel-intro-text {
   font-family: "Crimson Pro", serif;
-  font-weight: 400;
-  font-size: 24px;
+  font-weight: 300;
+  font-size: 22px;
   color: var(--color-text-primary);
   text-align: center;
   letter-spacing: 0.72px;
@@ -1117,13 +1161,10 @@ body {
   margin-bottom: 0;
 }
 
-.our-story-header-section .section-icon {
+.our-story-header-section .our-story-icon {
   height: 64.186px;
   width: auto;
   margin-bottom: 0;
-}
-
-.our-story-header-section .section-icon img {
   color: var(--color-accent-coral);
 }
 
@@ -1145,9 +1186,9 @@ body {
 
 .travel-content .section-heading {
   font-family: "Crimson Pro", serif;
-  font-weight: 700; /* Using 700 since 600 not available */
+  font-weight: 300;
   font-style: italic;
-  font-size: 31px;
+  font-size: 24px;
   color: var(--color-text-primary);
   text-align: left;
   letter-spacing: 0.93px;
@@ -1177,8 +1218,8 @@ body {
 
 .travel-text {
   font-family: "Crimson Pro", serif;
-  font-weight: 400;
-  font-size: 22px;
+  font-weight: 300;
+  font-size: 18px;
   color: var(--color-text-primary);
   text-align: left;
   letter-spacing: 0.66px;
@@ -1323,6 +1364,9 @@ body {
   .names-decoration {
     min-height: 50px;
     padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .content {
