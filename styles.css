@@ -83,7 +83,7 @@ svg {
 }
 
 img {
-  color: var(--color-accent-muted);
+  color: var(--color-accent-coral);
 }
 
 img.date-icon {
@@ -91,7 +91,7 @@ img.date-icon {
 }
 
 img.little-dash {
-  color: var(--color-accent-muted);
+  color: var(--color-background);
 }
 
 /* Desktop Container */
@@ -320,9 +320,8 @@ img.little-dash {
   height: auto;
   z-index: 0; /* Behind the text */
   display: block;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Center horizontally and vertically */
+  top: 17px;
+  left: 360px;
 }
 
 .main-heading {
@@ -331,7 +330,7 @@ img.little-dash {
   font-family: "Crimson Pro", serif;
   font-weight: 400;
   font-size: 32px; /* Updated from 38px to match Figma */
-  color: var(--color-text-primary);
+  color: rgba(165, 84, 52, 1);
   text-align: center;
   letter-spacing: 0.96px; /* Updated to match Figma */
   white-space: nowrap; /* Keep text on one line */
