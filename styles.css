@@ -76,6 +76,8 @@ body {
   color: var(--color-text-primary);
   line-height: normal;
   overflow-x: hidden;
+  font-size: 22px;
+  font-weight: 200;
 }
 
 svg {
@@ -86,8 +88,30 @@ img {
   color: var(--color-accent-coral);
 }
 
+.date-location-wrapper {
+  position: relative;
+}
+
 img.date-icon {
-  color: var(--color-accent-coral);
+  /* Hide original image for mask technique */
+  opacity: 0;
+  position: relative;
+}
+
+/* Use pseudo-element with mask to apply accent coral color to June5June8.svg */
+.date-location-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-accent-coral);
+  -webkit-mask: url("SVG/June5June8.svg") no-repeat center;
+  mask: url("SVG/June5June8.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  pointer-events: none;
 }
 
 img.little-dash {
@@ -320,8 +344,6 @@ img.little-dash {
   height: auto;
   z-index: 0; /* Behind the text */
   display: block;
-  top: 17px;
-  left: 360px;
 }
 
 .main-heading {
@@ -357,6 +379,26 @@ img.little-dash {
   bottom: -2.16%;
   left: 50%;
   transform: translateX(-50%);
+  /* Hide original image for mask technique */
+  opacity: 0;
+}
+
+/* Use pseudo-element with mask to apply accent coral color to Dahlia Adrien.svg */
+.names-decoration::after {
+  content: "";
+  position: absolute;
+  top: -0.72%;
+  bottom: -2.16%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 100%;
+  background-color: var(--color-accent-coral);
+  -webkit-mask: url("SVG/Dahlia Adrien.svg") no-repeat center;
+  mask: url("SVG/Dahlia Adrien.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  pointer-events: none;
 }
 
 .invitation-text {
@@ -414,8 +456,24 @@ img.little-dash {
   height: 2px;
   display: block;
   object-fit: contain;
-  /* Note: SVG colors are set in the SVG file itself since <img> sources can't access CSS variables */
-  /* Color should match --color-accent-coral: #a55434 */
+  /* Hide original image for mask technique */
+  opacity: 0;
+}
+
+/* Use pseudo-element with mask to apply link hover color to Separator Line.svg */
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-link-hover);
+  -webkit-mask: url("SVG/Separator Line.svg") no-repeat center;
+  mask: url("SVG/Separator Line.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  pointer-events: none;
 }
 
 /* Events Section */
@@ -448,11 +506,56 @@ img.little-dash {
 .events-section .section-icon {
   height: 69.57px; /* Specific height for events icon */
   width: 26.647px;
+  position: relative;
+}
+
+.events-section .section-icon img.spritz-icon {
+  opacity: 1;
+}
+
+/* Use pseudo-element with mask to apply link hover color to Spritz.svg */
+.events-section .section-icon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-link-hover);
+  -webkit-mask: url("SVG/Spritz.svg") no-repeat center;
+  mask: url("SVG/Spritz.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  pointer-events: none;
 }
 
 .registry-section .section-icon {
   height: 40.256px; /* Height from Figma */
   width: 103.788px;
+  position: relative;
+}
+
+.registry-section .section-icon img {
+  /* Hide the original image since we'll use a mask overlay */
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Use pseudo-element with mask to apply text primary color */
+.registry-section .section-icon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-text-primary);
+  -webkit-mask: url("SVG/Gondola.svg") no-repeat center;
+  mask: url("SVG/Gondola.svg") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  pointer-events: none;
 }
 
 .events-section .section-heading {
